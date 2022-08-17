@@ -9,6 +9,7 @@ const Author = () => {
         width={60}
         height={60}
         className='rounded-full'
+        alt='author image'
       />
       <div className='flex flex-col justify-center px-4'>
         <Link href={'/'}>

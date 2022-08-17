@@ -40,6 +40,7 @@ function Post() {
               className='rounded'
               width={300}
               height={250}
+              alt='plant image'
             />
           </a>
         </Link>

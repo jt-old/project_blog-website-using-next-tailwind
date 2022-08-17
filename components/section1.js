@@ -41,7 +41,12 @@ function Slide() {
       <div className='image'>
         <Link href={'/'}>
           <a>
-            <Image src={'/images/img1.jpeg'} width={600} height={600} />
+            <Image
+              src={'/images/img1.jpeg'}
+              width={600}
+              height={600}
+              alt='plant image'
+            />
           </a>
         </Link>
       </div>

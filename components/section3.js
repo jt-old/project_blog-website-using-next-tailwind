@@ -26,10 +26,15 @@ export default Section3
 function Post() {
   return (
     <div className='grid'>
-      <div classNAme='images'>
+      <div className='images'>
         <Link href={'/'}>
           <a>
-            <Image src={'/images/img1.jpeg'} width={600} height={400} />
+            <Image
+              src={'/images/img1.jpeg'}
+              width={600}
+              height={400}
+              alt='plant image'
+            />
           </a>
         </Link>
       </div>

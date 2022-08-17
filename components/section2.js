@@ -23,7 +23,7 @@ export default function Section2() {
 function Post() {
   return (
     <div className='item'>
-      <div classNAme='images'>
+      <div className='images'>
         <Link href={'/'}>
           <a>
             <Image
@@ -31,6 +31,7 @@ function Post() {
               className='rounded'
               width={500}
               height={350}
+              alt='plant image'
             />
           </a>
         </Link>
