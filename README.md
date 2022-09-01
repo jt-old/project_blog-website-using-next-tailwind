@@ -1,7 +1,5 @@
 # How to Make a Blog Website with Next.js and Tailwind CSS
 
-[Demo Deployed Through Vercel](https://blog-website-using-next-tailwind.vercel.app/)
-
 ## Some of my takeaways
 
 Creating React Functional Components
@@ -17,5 +15,3 @@ API Endpoints
 Dynamic API Routing
 
 You can access the tutorial [Here](https://www.youtube.com/watch?v=1T3GF6endl8)
-
-### Other Notes
