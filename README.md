@@ -1,6 +1,6 @@
 # How to Make a Blog Website with Next.js and Tailwind CSS
 
-## Some of my takeaways
+## Some of the main topics covered
 
 Creating React Functional Components
 Tailwind CSS
