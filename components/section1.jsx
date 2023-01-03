@@ -44,12 +44,12 @@ const Section1 = () => {
 }
 
 function Slide({ data }) {
-  const { id, title, category, date, img, author, subtitle } = data
+  const { id, title, category, published, img, author, subtitle } = data
 
   return (
     <div className="grid md:grid-cols-2">
       <div className="image">
-        <Link href={'/'}>
+        <Link href={`/posts/${id}`}>
           <a>
             <Image
               src={img || '/'}
@@ -63,20 +63,20 @@ function Slide({ data }) {
 
       <div className="info flex justify-center flex-col">
         <div className="cat">
-          <Link href={'/'}>
+          <Link href={`/posts/${id}`}>
             <a className="text-orange-600 hover:text-orange-800">
               {category || 'Unknown'}
             </a>
           </Link>
-          <Link href={'/'}>
+          <Link href={`/posts/${id}`}>
             <a className="text-gray-800 hover:text-gray-600">
-              - {date || 'Unknown'}
+              - {published || 'Unknown'}
             </a>
           </Link>
         </div>
 
         <div className="title">
-          <Link href={'/'}>
+          <Link href={`/posts/${id}`}>
             <a className="text-3xl md:text-6xl font-bold text-gray-800 hover:text-gray-600">
               {title || 'Unknown'}
             </a>
@@ -85,7 +85,7 @@ function Slide({ data }) {
 
         <p className="text-gray-500 py-3">{subtitle || 'Unknown'}</p>
 
-        {author && <Author author={author} />}
+        {author && <Author {...author} />}
       </div>
     </div>
   )

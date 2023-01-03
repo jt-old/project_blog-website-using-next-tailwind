@@ -35,12 +35,12 @@ const Section4 = () => {
 }
 
 function Post({ data }) {
-  const { id, title, category, date, img, author, subtitle } = data
+  const { id, title, category, published, img, author } = data
 
   return (
     <div className="flex gap-5">
       <div className="image flex flex-col justify-start">
-        <Link href={'/'}>
+        <Link href={`/posts/${id}`}>
           <a>
             <Image
               src={img || '/'}
@@ -54,26 +54,26 @@ function Post({ data }) {
       </div>
       <div className="info flex justify-center flex-col">
         <div className="cat">
-          <Link href={'/'}>
+          <Link href={`/posts/${id}`}>
             <a className="text-orange-600 hover:text-orange-800">
               {category || 'Unknown'}
             </a>
           </Link>
-          <Link href={'/'}>
+          <Link href={`/posts/${id}`}>
             <a className="text-gray-800 hover:text-gray-600">
-              - {date || 'Unknown'}{' '}
+              - {published || 'Unknown'}{' '}
             </a>
           </Link>
         </div>
 
         <div className="title">
-          <Link href={'/'}>
+          <Link href={`/posts/${id}`}>
             <a className="text-xl font-bold text-gray-800 hover:text-gray-600">
               {title || 'Unknown'}
             </a>
           </Link>
         </div>
-        {author && <Author data={author} />}
+        {author && <Author {...author} />}
       </div>
     </div>
   )
