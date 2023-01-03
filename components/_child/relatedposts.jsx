@@ -1,30 +1,37 @@
-import Link from 'next/link'
 import Image from 'next/image'
-import { Author } from './'
+import Link from 'next/link'
+import fetcher from '../../lib/fetcher'
+import { Author, Error, Spinner } from './'
 
 const Related = () => {
+  const { data, isLoading, isError } = fetcher('/api/trending')
+
+  if (isLoading) return <Spinner />
+  if (isError) return <Error />
+
   return (
     <section className="pt-20">
       <h1 className="font-bold text-3xl py-10">Related</h1>
 
       <div className="flex flex-col gap-10">
-        {Post()}
-        {Post()}
-        {Post()}
-        {Post()}
+        {data.map((data, index) => (
+          <Post key={index} data={data} />
+        ))}
       </div>
     </section>
   )
 }
 
-function Post() {
+function Post({ data }) {
+  const { title, category, img, published, author } = data
+
   return (
     <div className="flex gap-5">
       <div className="image flex flex-col justify-start">
-        <Link href={'/'}>
+        <Link href={`/posts/${id}`}>
           <a>
             <Image
-              src={'/images/img1.jpeg'}
+              src={img || '/'}
               className="rounded"
               width={300}
               height={200}
@@ -35,24 +42,26 @@ function Post() {
       </div>
       <div className="info flex justify-center flex-col">
         <div className="cat">
-          <Link href={'/'}>
+          <Link href={`/posts/${id}`}>
             <a className="text-orange-600 hover:text-orange-800">
-              Business, Travel
+              {category || 'Unknown'}
             </a>
           </Link>
-          <Link href={'/'}>
-            <a className="text-gray-800 hover:text-gray-600">- July 3, 2022</a>
+          <Link href={`/posts/${id}`}>
+            <a className="text-gray-800 hover:text-gray-600">
+              - {published || 'Unknown'}
+            </a>
           </Link>
         </div>
 
         <div className="title">
-          <Link href={'/'}>
+          <Link href={`/posts/${id}`}>
             <a className="text-xl font-bold text-gray-800 hover:text-gray-600">
-              Your most unhappy customers are your greatest source of learning
+              {title || 'Unknown'}
             </a>
           </Link>
         </div>
-        <Author />
+        {author && <Author {...author} />}
       </div>
     </div>
   )
