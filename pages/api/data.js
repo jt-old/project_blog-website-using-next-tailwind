@@ -1,4 +1,4 @@
-const posts = {
+export default {
   Trending: [
     {
       id: 1,
@@ -378,5 +378,3 @@ const posts = {
     },
   ],
 }
-
-export { posts }

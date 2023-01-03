@@ -2,7 +2,7 @@ import Layout from '../../layouts/layout.jsx'
 import { Author, Related } from '../../components/_child/index.js'
 import Image from 'next/image'
 
-export default function Page() {
+const Page = () => {
   return (
     <Layout>
       <section className="container mx-auto md:px-2 py-16 w-1/2">
@@ -41,3 +41,5 @@ export default function Page() {
     </Layout>
   )
 }
+
+export default Page

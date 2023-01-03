@@ -1,5 +1,5 @@
-import { Header, Footer } from '../components'
 import Head from 'next/head'
+import { Header, Footer } from '../components'
 
 const Layout = ({ children }) => {
   return (
@@ -9,7 +9,9 @@ const Layout = ({ children }) => {
       </Head>
 
       <Header />
+
       <main>{children}</main>
+
       <Footer />
     </>
   )
