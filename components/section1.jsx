@@ -1,11 +1,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import Author from './_child/author'
+import { Author } from './_child'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Autoplay } from 'swiper'
 import 'swiper/css'
 
-export default function Section1() {
+const Section1 = () => {
   SwiperCore.use({ Autoplay })
 
   const background = {
@@ -14,9 +14,9 @@ export default function Section1() {
   }
 
   return (
-    <section className='py-16' style={background}>
-      <div className='container:mx-auto md:px-20'>
-        <h1 className='font-bold text-4xl pb-12 text-center'>Trending</h1>
+    <section className="py-16" style={background}>
+      <div className="container:mx-auto md:px-20">
+        <h1 className="font-bold text-4xl pb-12 text-center">Trending</h1>
 
         <Swiper
           slidesPerView={1}
@@ -37,49 +37,51 @@ export default function Section1() {
 
 function Slide() {
   return (
-    <div className='grid md:grid-cols-2'>
-      <div className='image'>
+    <div className="grid md:grid-cols-2">
+      <div className="image">
         <Link href={'/'}>
           <a>
             <Image
               src={'/images/img1.jpeg'}
               width={600}
               height={600}
-              alt='plant image'
+              alt="plant image"
             />
           </a>
         </Link>
       </div>
 
-      <div className='info flex justify-center flex-col'>
-        <div className='cat'>
+      <div className="info flex justify-center flex-col">
+        <div className="cat">
           <Link href={'/'}>
-            <a className='text-orange-600 hover:text-orange-800'>
+            <a className="text-orange-600 hover:text-orange-800">
               Business, Travel
             </a>
           </Link>
           <Link href={'/'}>
-            <a className='text-gray-800 hover:text-gray-600'>- July 3, 2022</a>
+            <a className="text-gray-800 hover:text-gray-600">- July 3, 2022</a>
           </Link>
         </div>
 
-        <div className='title'>
+        <div className="title">
           <Link href={'/'}>
-            <a className='text-3xl md:text-6xl font-bold text-gray-800 hover:text-gray-600'>
+            <a className="text-3xl md:text-6xl font-bold text-gray-800 hover:text-gray-600">
               Your most unhappy customers are your greatest source of learning
             </a>
           </Link>
         </div>
 
-        <p className='text-gray-500 py-3'>
+        <p className="text-gray-500 py-3">
           Even the all-powerful Pointing has no control about the blind texts it
           is an almost unorthographic life. One day however, a small line of
           blind text by the name of Lorem Ipsum decided to leave for the far
           World of Grammar
         </p>
 
-        <Author></Author>
+        <Author />
       </div>
     </div>
   )
 }
+
+export default Section1

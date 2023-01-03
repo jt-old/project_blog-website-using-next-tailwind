@@ -1,7 +1,7 @@
 import { ImFacebook, ImTwitter, ImYoutube } from 'react-icons/im'
 import Link from 'next/link'
 
-export default function Header() {
+const Header = () => {
   return (
     <>
       <header className='bg-gray-50'>
@@ -38,3 +38,5 @@ export default function Header() {
     </>
   )
 }
+
+export default Header

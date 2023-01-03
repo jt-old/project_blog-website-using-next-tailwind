@@ -1,8 +1,8 @@
 import { ImFacebook, ImTwitter, ImYoutube } from 'react-icons/im'
 import Link from 'next/link'
-import Newsletter from './_child/newsletter'
+import { Newsletter } from './_child'
 
-export default function Footer() {
+const Footer = () => {
   const bg = {
     backgroundImage: "url('/images/footer.png')",
     backgroundRepeat: 'no-repeat',
@@ -41,3 +41,5 @@ export default function Footer() {
     </footer>
   )
 }
+
+export default Footer
