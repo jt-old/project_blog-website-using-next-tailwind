@@ -1,21 +1,26 @@
-import { Swiper, SwiperSlide } from 'swiper/react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Author } from './_child'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Author, Spinner, Error } from './_child'
+import fetcher from '../lib/fetcher'
 
 const Section3 = () => {
+  const { data, isLoading, isError } = fetcher('/api/popular')
+
+  if (isLoading) return <Spinner />
+  if (isError) return <Error />
+
   return (
     <section className="container mx-auto md:px-20 py-16">
       <h1 className="font-bold text-4xl py-12 text-center">Most Popular</h1>
 
       {/* swiper */}
       <Swiper slidesPerView={2}>
-        <SwiperSlide>{Post()}</SwiperSlide>
-        <SwiperSlide>{Post()}</SwiperSlide>
-        <SwiperSlide>{Post()}</SwiperSlide>
-        <SwiperSlide>{Post()}</SwiperSlide>
-        <SwiperSlide>{Post()}</SwiperSlide>
-        <SwiperSlide>{Post()}</SwiperSlide>
+        {data.map((data, index) => (
+          <SwiperSlide key={index}>
+            <Post data={data} />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </section>
   )
@@ -23,17 +28,19 @@ const Section3 = () => {
 
 export default Section3
 
-function Post() {
+function Post({ data }) {
+  const { id, title, category, date, img, author, subtitle } = data
+
   return (
     <div className="grid">
       <div className="images">
         <Link href={'/'}>
           <a>
             <Image
-              src={'/images/img1.jpeg'}
+              src={img || '/'}
               width={600}
               height={400}
-              alt="plant image"
+              alt="post-graphic"
             />
           </a>
         </Link>
@@ -43,30 +50,27 @@ function Post() {
         <div className="cat">
           <Link href={'/'}>
             <a className="text-orange-600 hover:text-orange-800">
-              Business, Travel
+              {category || 'Unknown'}
             </a>
           </Link>
           <Link href={'/'}>
-            <a className="text-gray-800 hover:text-gray-600">- July 3, 2022</a>
+            <a className="text-gray-800 hover:text-gray-600">
+              - {date || 'Unknown'}
+            </a>
           </Link>
         </div>
 
         <div className="title">
           <Link href={'/'}>
             <a className="text-3xl md:text-4xl font-bold text-gray-800 hover:text-gray-600">
-              Your most unhappy customers are your greatest source of learning
+              {title || 'Unknown'}
             </a>
           </Link>
         </div>
 
-        <p className="text-gray-500 py-3">
-          Even the all-powerful Pointing has no control about the blind texts it
-          is an almost unorthographic life. One day however, a small line of
-          blind text by the name of Lorem Ipsum decided to leave for the far
-          World of Grammar
-        </p>
+        <p className="text-gray-500 py-3">{subtitle || 'Unknown'}</p>
 
-        <Author />
+        {author && <Author author={author} />}
       </div>
     </div>
   )
